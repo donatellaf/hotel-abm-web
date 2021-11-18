@@ -1,0 +1,23 @@
+node_modules
+
+# dependencies
+hotel-frontend/node_modules
+hotel-frontend/.pnp
+hotel-frontend/.pnp.js
+
+# testing
+hotel-frontend/coverage
+
+# production
+hotel-frontend/build
+
+# misc
+hotel-frontend/.DS_Store
+hotel-frontend/.env.local
+hotel-frontend/.env.development.local
+hotel-frontend/.env.test.local
+hotel-frontend/.env.production.local
+
+hotel-frontend/npm-debug.log*
+hotel-frontend/yarn-debug.log*
+hotel-frontend/yarn-error.log*

@@ -20,7 +20,7 @@ const Login = () => {
     await httpPost("login/", formValues).then((res) =>
       localStorage.setItem("token", res.data.access)
     );
-    navigate("./cliente");
+    navigate("./perfil");
     window.location.reload();
   };
   return (

@@ -105,6 +105,7 @@ export default function MiniDrawer({ children }) {
 
   const handleClose = () => {
     setAnchorEl(null);
+    navigate("./perfil");
   };
 
   const handleLogout = () => {
@@ -160,7 +161,7 @@ export default function MiniDrawer({ children }) {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>
+              <MenuItem onClick={handleClose} href="./perfil">
                 <ListItemIcon>
                   <AccountCircle fontSize="small" />
                 </ListItemIcon>

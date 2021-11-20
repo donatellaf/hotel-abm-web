@@ -7,6 +7,7 @@ import Register from "../container/register/Register";
 import Vendedor from "../container/vendedor/Vendedor";
 import PrivateLayout from "../layout/private/PrivateLayout";
 import PublicLayout from "../layout/public/PublicLayout";
+import Perfil from "../container/perfil/Perfil";
 
 const AppRoutes = () => {
   const isLoggedIn = localStorage.getItem("token");
@@ -28,6 +29,7 @@ const AppRoutes = () => {
             <Route exact path="/cliente" element={<Cliente />} />
             <Route path="/vendedor" element={<Vendedor />} />
             <Route path="/habitacion" element={<Habitacion />} />
+            <Route path="/perfil" element={<Perfil />} />
             <Route path="*" element={<Cliente />} />
           </Routes>
         </PrivateLayout>

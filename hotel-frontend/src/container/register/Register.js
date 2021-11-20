@@ -10,6 +10,9 @@ import {
 import { useForm } from "../../hooks/useForm";
 import { httpPost } from "../../utils/httpFunctions";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+const BASE_URL = "http://localhost:8000/api/";
 
 const Register = () => {
   const [formValues, handleInputChange] = useForm();
@@ -17,8 +20,9 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    await httpPost("register/", formValues);
+    await axios.post(BASE_URL + "register/", formValues);
     navigate("./login");
+    window.location.reload();
   };
   return (
     <Paper elevation={15} sx={{ width: 500 }}>
@@ -40,13 +44,12 @@ const Register = () => {
           <Grid item xs={12}>
             <TextField
               label="Contraseña"
+              helperText=" "
               name="password"
+              type="password"
               fullWidth
               onChange={handleInputChange}
             />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField helperText=" " label="Repita contraseña" fullWidth />
           </Grid>
           <Grid item xs={12} sx={{ textAlign: "end", marginTop: -5 }}>
             <Link href="/login">

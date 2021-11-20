@@ -45,6 +45,7 @@ const Login = () => {
               helperText=" "
               label="Contraseña"
               name="password"
+              type="password"
               onChange={handleInputChange}
               fullWidth
             />

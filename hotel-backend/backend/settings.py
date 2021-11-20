@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-s-nb8w4uo&*&^m5r5q0p&%z-k7pi&5d(kiik%d1j!g0svsc@$$'
+SECRET_KEY = 'django-insecure-tym9j*e=af(j+!&)z!6dz(kbwxwjyl6m%6n6@@11g@mtd(r5s5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'drf_yasg',
+    'api'
 ]
 
 MIDDLEWARE = [
@@ -47,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -123,3 +129,30 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    }
+}
+
+# aca lo normal seria poner la lista de url's de front end apps que queremos dejar que le hagan requests a este backend
+# por ej: http://localhost:3000
+#
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+]
+
+# dejar esta setting en True permite que cualquier front end app pueda hacer requests a este backend gnorando
+# la setting de arriba, lo seguro seria dejar esta setting en False y completar la lista de url's en esa setting
+CORS_ALLOW_ALL_ORIGINS = True
